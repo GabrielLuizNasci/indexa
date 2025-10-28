@@ -1,1 +1,25 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary" class="app-toolbar">
+  <button mat-icon-button class="example-icon" aria-label="Menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  
+  <span routerLink="/lista-contatos" class="app-title-link">
+    Indexa - Gerenciador de Contatos
+  </span>
+
+  <span class="toolbar-spacer"></span>
+
+  <button 
+    mat-raised-button 
+    color="accent" 
+    routerLink="/formulario" 
+    aria-label="Adicionar novo contato"
+  >
+    <mat-icon>person_add</mat-icon>
+    Novo Contato
+  </button>
+</mat-toolbar>
+
+<main class="content-area">
+    <router-outlet></router-outlet>
+</main>

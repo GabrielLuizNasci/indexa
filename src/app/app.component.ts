@@ -7,12 +7,9 @@ import { SeparadorComponent } from './components/separador/separador.component';
 import { ContatoComponent } from './components/contato/contato.component';
 import { FormsModule } from '@angular/forms';
 import { FormularioContatoComponent } from './pages/formulario-contato/formulario-contato.component';
-
-interface Contato {
-  id: number;
-  nome: string;
-  telefone: string;
-}
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
@@ -25,11 +22,14 @@ interface Contato {
     SeparadorComponent,
     ContatoComponent,
     FormularioContatoComponent,
-    FormsModule
+    FormsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+  title = 'Indexa';
 }

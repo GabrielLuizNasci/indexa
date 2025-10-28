@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { SeparadorComponent } from '../../components/separador/separador.component';
 import { ContainerComponent } from '../../components/container/container.component';
 import { CabecalhoComponent } from '../../components/cabecalho/cabecalho.component';
@@ -7,13 +7,7 @@ import { RouterLink } from '@angular/router';
 import { ContatoService } from '../../services/contato.service';
 import { ContatoComponent } from '../../components/contato/contato.component';
 import { CommonModule } from '@angular/common';
-
-
-interface Contato {
-  id: number;
-  nome: string;
-  telefone: string;
-}
+import { Contato } from '../../components/contato/contato';
 
 @Component({
   selector: 'app-lista-contatos',
@@ -35,10 +29,22 @@ export class ListaContatosComponent implements OnInit {
   contatos: Contato[] = [];
   filtroPorTexto: string = '';
 
-  constructor(private contatoService: ContatoService){  }
+  private contatoService = inject(ContatoService);
 
   ngOnInit() {
-    this.contatos = this.contatoService.obterContatos();
+    this.carregarContatos();
+  }
+
+  carregarContatos() {
+    this.contatoService.obterContatos().subscribe({
+        next: (contatosRecebidos) => {
+            this.contatos = contatosRecebidos;
+        },
+        error: (erro) => {
+            console.error('Erro ao carregar contatos da API:', erro);
+            alert('Não foi possível carregar a lista de contatos. Verifique se o servidor Spring Boot está ativo.');
+        }
+    });
   }
 
   filtrarContatosPorTexto(): Contato[] {
@@ -46,12 +52,13 @@ export class ListaContatosComponent implements OnInit {
       return this.contatos
     }
     return this.contatos.filter(contato => {
-      return contato.nome.toUpperCase().includes(this.filtroPorTexto.toUpperCase())
+      return contato.nome.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().includes(this.filtroPorTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase())
     })
   }
 
   filtrarContatosPorLetra(letra: string): Contato[] {
     const contatosFiltrados = this.filtrarContatosPorTexto().filter(contato => {
+      if (!contato.nome) return false;
       const nomeNormalizado = contato.nome.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
       return nomeNormalizado.toUpperCase().startsWith(letra.toUpperCase());
     });
