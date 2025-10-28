@@ -15,7 +15,7 @@
         </section>
         <app-separador />
     </header>
-    <form [formGroup]="contatoForm" (ngSubmit)="salvarContatos()">
+    <form [formGroup]="contatoForm" (ngSubmit)="salvarContato()">
         <label for="nome">Nome</label>
         <input 
             type="text" 
@@ -58,21 +58,21 @@
             </div>
         }
         <app-separador />
-        <label for="aniversario">Aniversário</label>
+        <label for="dataAniversario">Aniversário</label>
         <input 
             type="date" 
-            id="aniversario" 
+            id="dataAniversario" 
             placeholder="Data de Nascimento"
-            formControlName="aniversario"
+            formControlName="dataAniversario"
         />
-        <label for="redes">Redes Sociais</label>
+        <label for="redesSociais">Redes Sociais</label>
         <div class="input-container">
             <span class="span-http">http://</span>
             <input 
                 type="url" 
-                id="redes" 
+                id="redesSociais" 
                 placeholder="Adicione a URL da página"
-                formControlName="redes"
+                formControlName="redesSociais"
             />
         </div>
         <label for="observacoes">Observações</label>
@@ -87,7 +87,6 @@
                 (click)="cancelar()" 
                 class="botao-cancelar" 
                 type="button"
-
             >
                 Cancelar
             </button>

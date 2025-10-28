@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SeparadorComponent } from '../../components/separador/separador.component';
 import { ContainerComponent } from '../../components/container/container.component';
 import { CabecalhoComponent } from '../../components/cabecalho/cabecalho.component';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import agenda from '../../../assets/json/agenda.json'
+import { ContatoService } from '../../services/contato.service';
+import { ContatoComponent } from '../../components/contato/contato.component';
+import { CommonModule } from '@angular/common';
+
 
 interface Contato {
   id: number;
@@ -16,19 +19,27 @@ interface Contato {
   selector: 'app-lista-contatos',
   standalone: true,
   imports: [
+    CommonModule,
     SeparadorComponent,
     ContainerComponent,
     CabecalhoComponent,
     FormsModule,
-    RouterLink
+    RouterLink,
+    ContatoComponent
   ],
   templateUrl: './lista-contatos.component.html',
   styleUrl: './lista-contatos.component.css'
 })
-export class ListaContatosComponent {
+export class ListaContatosComponent implements OnInit {
   alfabeto: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-  contatos: Contato[] = agenda;
+  contatos: Contato[] = [];
   filtroPorTexto: string = '';
+
+  constructor(private contatoService: ContatoService){  }
+
+  ngOnInit() {
+    this.contatos = this.contatoService.obterContatos();
+  }
 
   filtrarContatosPorTexto(): Contato[] {
     if(!this.filtroPorTexto) {
@@ -40,8 +51,10 @@ export class ListaContatosComponent {
   }
 
   filtrarContatosPorLetra(letra: string): Contato[] {
-    return this.filtrarContatosPorTexto().filter(contato => {
-      return contato.nome.toUpperCase().startsWith(letra.toUpperCase());
-    })
+    const contatosFiltrados = this.filtrarContatosPorTexto().filter(contato => {
+      const nomeNormalizado = contato.nome.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      return nomeNormalizado.toUpperCase().startsWith(letra.toUpperCase());
+    });
+    return contatosFiltrados;
   }
 }
