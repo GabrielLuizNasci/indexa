@@ -1,0 +1,80 @@
+@if (contato) {
+    <app-container>
+        <header>
+            <section class="cabecalho-perfil">
+                <img src="assets/logo.png" alt="Indexa Logo" class="logo-centralizada" />
+                <button routerLink="/lista-contatos" class="botao-voltar">
+                    <img src="assets/arrow-left.png" alt="Seta para esquerda">
+                    <span>Voltar</span>
+                </button>
+            </section>
+            <section class="titulo-perfil">
+                <img src="assets/perfil-contato.png" alt="Ícone de perfil" class="icone-perfil-grande" />
+                <h1>Perfil do Contato</h1>
+                <app-separador />
+            </section>
+        </header>
+        <section class="info-card">
+            <div class="header-card">
+                <img src="https://placehold.co/80x80/93C5FD/ffffff?text=AV" alt="Avatar do Contato" class="avatar" />
+                <h2>{{ contato.nome }}</h2>
+            </div>
+
+            <ul class="detalhes-lista">
+                <li>
+                    <mat-icon>phone</mat-icon> 
+                    <div class="info-group">
+                        <strong>Número</strong>
+                        <span>{{ contato.telefone }}</span>
+                    </div>
+                </li>
+                <li>
+                    <mat-icon>email</mat-icon> 
+                    <div class="info-group">
+                        <strong>Email</strong>
+                        <span>{{ contato.email }}</span>
+                    </div>
+                </li>
+
+                <li>
+                    <mat-icon>calendar_today</mat-icon> 
+                    <div class="info-group">
+                        <strong>Data de nascimento</strong>
+                        <span>{{ formatarData(contato.dataAniversario) }}</span>
+                    </div>
+                </li>
+
+                <li>
+                    <mat-icon>language</mat-icon> 
+                    <div class="info-group">
+                        <strong>Redes sociais</strong>
+                        <a [href]="contato.redesSociais" target="_blank" class="link-social">
+                            {{ contato.redesSociais || 'Nenhuma informada' }}
+                        </a>
+                    </div>
+                </li>
+                @if (contato.observacoes) {
+                    <li class="observacoes-item">
+                        <mat-icon>notes</mat-icon>
+                        <div class="info-group">
+                            <strong>Observações</strong>
+                            <p class="observacoes-texto">{{ contato.observacoes }}</p>
+                        </div>
+                    </li>
+                }
+            </ul>
+            <div class="botoes-perfil">
+                <button (click)="excluirContato()" class="botao-excluir">
+                    Excluir contato
+                </button>
+                <button (click)="editarContato()" class="botao-editar">
+                    Editar
+                </button>
+            </div>
+        </section>
+    </app-container>
+} @else if (!contato) {
+    <app-container>
+        <p class="text-center">Carregando informações do contato...</p>
+    </app-container>
+}

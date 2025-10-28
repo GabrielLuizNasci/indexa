@@ -1,0 +1,235 @@
+/* --- Estilos Gerais e Cabeçalho --- */
+
+/* Centraliza o container principal para alinhamento geral */
+app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 16px; /* Adiciona padding lateral para mobile */
+}
+
+header {
+    width: 100%;
+    max-width: 416px; /* Largura máxima do conteúdo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Garante que o cabeçalho superior (logo e voltar) se alinhe corretamente */
+.cabecalho-perfil {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Para posicionar o botão Voltar */
+    margin-bottom: 20px;
+}
+
+.logo-centralizada {
+    margin-bottom: 30px; /* Espaço entre a logo e o conteúdo abaixo */
+}
+
+/* Estilo do botão "Voltar" (no canto superior esquerdo) */
+.botao-voltar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.botao-voltar span {
+    color: #0D6EFD;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.botao-voltar img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Estilos do Título do Perfil (Ícone, Título e Separador) */
+.titulo-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.icone-perfil-grande {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #0D6EFD;
+    margin: 0;
+}
+
+/* --- Card de Informações (INFO-CARD) --- */
+
+.info-card {
+    width: 100%;
+    max-width: 416px; /* Limita a largura do card */
+    background-color: #FFFFFF; /* Fundo branco para o card */
+    border-radius: 16px;
+    padding: 24px 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar */
+    margin-bottom: 32px;
+}
+
+/* Cabeçalho do Card (Avatar e Nome) */
+.header-card {
+    display: flex;
+    flex-direction: column; /* Alinha o avatar e o nome verticalmente (opcional, pode ser em linha) */
+    align-items: center;
+    border-bottom: 1px solid #dee2e6; /* Linha separadora, como no Figma */
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #93C5FD;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0D6EFD;
+    margin: 0;
+}
+
+/* --- Lista de Detalhes (DETALHES-LISTA) --- */
+
+.detalhes-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.detalhes-lista li {
+    display: flex;
+    align-items: flex-start; /* Alinha o ícone e o texto no topo */
+    padding: 12px 0;
+    gap: 16px; /* Espaçamento entre o ícone e o conteúdo */
+}
+
+/* Estilos para os ícones (Mat-icon ou imagem) */
+.detalhes-lista mat-icon,
+.detalhes-lista img {
+    color: #0D6EFD;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0; /* Impede o ícone de encolher */
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.info-group strong {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #333;
+}
+
+.info-group span,
+.info-group a,
+.info-group p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #555;
+    word-break: break-word; /* Garante que longas URLs quebrem */
+}
+
+.link-social {
+    color: #0D6EFD !important;
+    text-decoration: underline;
+}
+
+/* Estilo específico para Observações */
+.observacoes-item {
+    padding-bottom: 0; /* Remove padding extra do último item */
+}
+
+.observacoes-texto {
+    white-space: pre-wrap; /* Preserva quebras de linha/espaços, útil para observações */
+    margin-top: 4px;
+}
+
+
+/* --- Botões de Ação --- */
+
+.botoes-perfil {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid #dee2e6; /* Separador antes dos botões, como no Figma */
+}
+
+.botao-excluir,
+.botao-editar {
+    flex-grow: 1; /* Distribui o espaço igualmente */
+    height: 48px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.botao-excluir {
+    color: #0D6EFD;
+    background-color: #FFFFFF;
+    border: 1px solid #0D6EFD;
+}
+
+.botao-excluir:hover {
+    background-color: #e7f1ff;
+}
+
+.botao-editar {
+    color: #FFFFFF;
+    background-color: #0D6EFD;
+    border: none;
+}
+
+.botao-editar:hover {
+    background-color: #0c63e4;
+}

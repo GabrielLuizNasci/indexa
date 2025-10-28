@@ -21,8 +21,7 @@
 
     <div *ngFor="let contato of filtrarContatosPorLetra(letra)">
       <app-contato 
-        [nome]="contato.nome" 
-        [telefone]="contato.telefone">
+        [contato]="contato">
       </app-contato>
     </div>
   </div>

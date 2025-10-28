@@ -1,14 +1,16 @@
 <section class="contato">
     <ul>
-        <li> <strong>{{ nome }} </strong></li>
-        <li>{{ telefone }} </li>
+        <li> <strong>{{ contato.nome }} </strong></li>
+        <li>{{ contato.telefone }} </li>
         <li>
-            <button>
-                <img src="assets/pencil-square.png" alt="Editar">
+            <button class="icon-button">
+                <a [routerLink]="['/perfil-contato', contato.id]">
+                    <img src="assets/pencil-square.png" alt="Editar">
+                </a>
             </button>
         </li>
         <li>
-            <button>
+            <button class="icon-button" (click)="excluirContato()">
                 <img src="assets/trash.png" alt="Excluir">
             </button>
         </li>
