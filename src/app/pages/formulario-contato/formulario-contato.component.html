@@ -11,11 +11,11 @@
         </section>
         <section class="cabecalho-link">
             <img src="assets/adicionar-contato.png" />
-            <h1>Adicionar Contato</h1>
+            <h1>{{ titulo }}</h1> 
         </section>
         <app-separador />
     </header>
-    <form [formGroup]="contatoForm" (ngSubmit)="salvarContato()">
+    <form [formGroup]="contatoForm" (ngSubmit)="salvarOuEditarContato()"> 
         <label for="nome">Nome</label>
         <input 
             type="text" 
@@ -96,7 +96,7 @@
                 class="botao-salvar" 
                 type="submit"
             >
-                Salvar
+                Salvar 
             </button>
         </section>
     </form>

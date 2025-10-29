@@ -25,8 +25,16 @@ export class ContatoService {
     return this.http.get<Contato>(`${API_URL}/${id}`);
   }
 
-  atualizarContato(id: number, contato: Contato): Observable<Contato> {
-    return this.http.put<Contato>(`${API_URL}/${id}`, contato);
+  editarContato(contato: Contato): Observable<Contato> {
+    return this.http.put<Contato>(`${API_URL}/${contato.id}`, contato);
+  }
+  
+  editarOuSalvarContato(contato: Contato): Observable<Contato> {
+    if (contato.id) {
+      return this.editarContato(contato);
+    } else {
+      return this.salvarContato(contato);
+    }
   }
 
   excluirContato(id: number): Observable<void> {
