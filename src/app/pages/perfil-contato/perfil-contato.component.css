@@ -1,36 +1,31 @@
-/* --- Estilos Gerais e Cabeçalho --- */
-
-/* Centraliza o container principal para alinhamento geral */
 app-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 16px; /* Adiciona padding lateral para mobile */
+    padding: 0 16px; 
 }
 
 header {
     width: 100%;
-    max-width: 416px; /* Largura máxima do conteúdo */
+    max-width: 416px; 
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Garante que o cabeçalho superior (logo e voltar) se alinhe corretamente */
 .cabecalho-perfil {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative; /* Para posicionar o botão Voltar */
+    position: relative; 
     margin-bottom: 20px;
 }
 
 .logo-centralizada {
-    margin-bottom: 30px; /* Espaço entre a logo e o conteúdo abaixo */
+    margin-bottom: 30px; 
 }
 
-/* Estilo do botão "Voltar" (no canto superior esquerdo) */
 .botao-voltar {
     position: absolute;
     top: 0;
@@ -56,7 +51,6 @@ header {
     height: 24px;
 }
 
-/* Estilos do Título do Perfil (Ícone, Título e Separador) */
 .titulo-perfil {
     display: flex;
     flex-direction: column;
@@ -80,24 +74,21 @@ h1 {
     margin: 0;
 }
 
-/* --- Card de Informações (INFO-CARD) --- */
-
 .info-card {
     width: 100%;
-    max-width: 416px; /* Limita a largura do card */
-    background-color: #FFFFFF; /* Fundo branco para o card */
+    max-width: 416px; 
+    background-color: #FFFFFF; 
     border-radius: 16px;
     padding: 24px 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
     margin-bottom: 32px;
 }
 
-/* Cabeçalho do Card (Avatar e Nome) */
 .header-card {
     display: flex;
-    flex-direction: column; /* Alinha o avatar e o nome verticalmente (opcional, pode ser em linha) */
+    flex-direction: column; 
     align-items: center;
-    border-bottom: 1px solid #dee2e6; /* Linha separadora, como no Figma */
+    border-bottom: 1px solid #dee2e6; 
     padding-bottom: 20px;
     margin-bottom: 20px;
 }
@@ -125,7 +116,6 @@ h2 {
     margin: 0;
 }
 
-/* --- Lista de Detalhes (DETALHES-LISTA) --- */
 
 .detalhes-lista {
     list-style: none;
@@ -180,18 +170,16 @@ h2 {
     text-decoration: underline;
 }
 
-/* Estilo específico para Observações */
 .observacoes-item {
     padding-bottom: 0; /* Remove padding extra do último item */
 }
 
 .observacoes-texto {
-    white-space: pre-wrap; /* Preserva quebras de linha/espaços, útil para observações */
+    white-space: pre-wrap; 
     margin-top: 4px;
 }
 
 
-/* --- Botões de Ação --- */
 
 .botoes-perfil {
     display: flex;
